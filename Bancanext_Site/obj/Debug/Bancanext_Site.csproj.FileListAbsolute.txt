@@ -1,0 +1,5 @@
+c:\users\one\documents\visual studio 2012\Projects\Bancanext_Site\Bancanext_Site\bin\Bancanext_Site.dll
+c:\users\one\documents\visual studio 2012\Projects\Bancanext_Site\Bancanext_Site\bin\Bancanext_Site.pdb
+c:\users\one\documents\visual studio 2012\Projects\Bancanext_Site\Bancanext_Site\obj\Debug\Bancanext_Site.csprojResolveAssemblyReference.cache
+c:\users\one\documents\visual studio 2012\Projects\Bancanext_Site\Bancanext_Site\obj\Debug\Bancanext_Site.dll
+c:\users\one\documents\visual studio 2012\Projects\Bancanext_Site\Bancanext_Site\obj\Debug\Bancanext_Site.pdb
