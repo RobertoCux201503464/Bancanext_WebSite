@@ -1,3 +1,3 @@
 # Website de Bancanext
 
-Bancanext es un sistema de banca en linea, utilizado la tecnología ASP.NET.
+Bancanext es un sistema de banca en línea, utilizando la tecnología ASP.NET.
