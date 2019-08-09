@@ -1,0 +1,64 @@
+
+use Proyecto_bancanext;
+CREATE TABLE cuenta (
+    cuenta                   INTEGER NOT NULL,
+    moneda                   VARCHAR(150) NOT NULL,
+    monto_disponible         bigint NOT NULL,
+    tipocuenta_tipo_cuenta   INTEGER NOT NULL,
+    usuario_usuario          INTEGER NOT NULL
+)
+
+
+
+ALTER TABLE cuenta add check(moneda IN(
+    'dolar americano', 'euro', 'peso mexicano', 'quetzal'
+)) 
+
+ALTER TABLE CUENTA ADD constraint cuenta_pk PRIMARY KEY CLUSTERED (cuenta, USUARIO_usuario)
+     WITH (
+     ALLOW_PAGE_LOCKS = ON , 
+     ALLOW_ROW_LOCKS = ON ) 
+
+CREATE TABLE tipocuenta (
+    tipo_cuenta   INTEGER NOT NULL,
+    nombre        VARCHAR(150) NOT NULL
+)
+
+
+
+ALTER TABLE TIPOCUENTA ADD constraint tipocuenta_pk PRIMARY KEY CLUSTERED (tipo_cuenta)
+     WITH (
+     ALLOW_PAGE_LOCKS = ON , 
+     ALLOW_ROW_LOCKS = ON ) 
+
+CREATE TABLE usuario (
+    usuario        INTEGER NOT NULL,
+    nombre         VARCHAR(150) NOT NULL,
+    apellido       VARCHAR(150) NOT NULL,
+    fecha_inicio   datetime NOT NULL,
+    activo         bit NOT NULL,
+    fecha_fin      datetime
+)
+
+
+
+ALTER TABLE usuario add check(activo IN(
+    'false', 'true'
+)) 
+
+ALTER TABLE USUARIO ADD constraint usuario_pk PRIMARY KEY CLUSTERED (usuario)
+     WITH (
+     ALLOW_PAGE_LOCKS = ON , 
+     ALLOW_ROW_LOCKS = ON ) 
+
+ALTER TABLE CUENTA
+    ADD CONSTRAINT cuenta_tipocuenta_fk FOREIGN KEY ( tipocuenta_tipo_cuenta )
+        REFERENCES tipocuenta ( tipo_cuenta )
+ON DELETE NO ACTION 
+    ON UPDATE no action 
+
+ALTER TABLE CUENTA
+    ADD CONSTRAINT cuenta_usuario_fk FOREIGN KEY ( usuario_usuario )
+        REFERENCES usuario ( usuario )
+ON DELETE NO ACTION 
+    ON UPDATE no action 
