@@ -1,9 +1,11 @@
-
+create database Proyecto_bancanext;
 use Proyecto_bancanext;
+
+
 CREATE TABLE cuenta (
     cuenta                   INTEGER NOT NULL,
     moneda                   VARCHAR(150) NOT NULL,
-    monto_disponible         bigint NOT NULL,
+    monto_disponible         float NOT NULL,
     tipocuenta_tipo_cuenta   INTEGER NOT NULL,
     usuario_usuario          INTEGER NOT NULL
 )
@@ -35,9 +37,9 @@ CREATE TABLE usuario (
     usuario        INTEGER NOT NULL,
     nombre         VARCHAR(150) NOT NULL,
     apellido       VARCHAR(150) NOT NULL,
-    fecha_inicio   datetime NOT NULL,
+    fecha_inicio   varchar(20) NOT NULL,
     activo         bit NOT NULL,
-    fecha_fin      datetime
+    fecha_fin      varchar(20)
 )
 
 
@@ -62,3 +64,47 @@ ALTER TABLE CUENTA
         REFERENCES usuario ( usuario )
 ON DELETE NO ACTION 
     ON UPDATE no action 
+
+
+
+
+insert into usuario values(1,'roberto','cux','201904','1','201904');
+insert into usuario values(2,'roberto1','cux2','201905','1','201905');
+insert into usuario values(3,'roberto2','cux3','201906','1','201906');
+insert into usuario values(4,'roberto3','cux4','201907','1','201907');
+insert into usuario values(5,'roberto4','cux5','201908','1','201908');
+
+select * from usuario;
+
+
+insert into tipocuenta values(1,'monetaria');
+insert into tipocuenta values(2,'ahorro');
+
+
+insert into cuenta values(1,'quetzal',102,1,1);
+insert into cuenta values(2,'quetzal',1.2,2,2);
+insert into cuenta values(3,'quetzal',102.22,1,3);
+insert into cuenta values(4,'quetzal',10.212,2,4);
+
+
+
+
+
+
+go
+create procedure vercuenta @usuarios integer, @tiposcuenta integer, @cuentas integer
+as
+select a.cuenta,c.nombre ,b.nombre,a.monto_disponible from cuenta a,tipocuenta b,usuario c
+where a.usuario_usuario=c.usuario and b.tipo_cuenta=a.tipocuenta_tipo_cuenta
+and c.usuario=@usuarios and b.tipo_cuenta=@tiposcuenta and a.cuenta=@cuentas
+go 
+drop procedure vercuenta;
+
+select * from cuenta;
+exec vercuenta 4,2,4
+
+
+
+
+
+
